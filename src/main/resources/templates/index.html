@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Spin Repoerter</title>
+
+    <!-- Icons -->
+    <link rel="icon" href="https://cdn.plyr.io/static/icons/favicon.ico" />
+    <link rel="icon" type="image/png" href="https://cdn.plyr.io/static/icons/32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="https://cdn.plyr.io/static/icons/16x16.png" sizes="16x16" />
+    <link rel="apple-touch-icon" sizes="180x180" href="https://cdn.plyr.io/static/icons/180x180.png" />
+</head>
+
+<!-- Bootstrap -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/owl.carousel.min.css" rel="stylesheet">
+<link href="css/owl.theme.default.min.css" rel="stylesheet">
+<link href="css/owl.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<link href="css/animate.css" rel="stylesheet">
+<link href="css/navbar.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/media-queries.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+<style>
+    /* Note: Try to remove the following lines to see the effect of CSS positioning */
+    
+    .affix {
+        top: 0;
+        width: 100%;
+        z-index: 9999 !important;
+    }
+    
+    .affix + .container-fluid {
+        padding-top: 70px;
+    }
+</style>
+</head>
+
+<body style="background-color: #F2F3F4;">
+    <!--- scroll up toggle button-->
+    <i class="fa fa-angle-double-up" onclick="topFunction()" id="myBtn" title="Go to top"></i>
+    <!--scroll up toggle button end-->
+    <header style="background-color: #fff;">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <a href="index.html"><img src="/images/SPIN REPORTER png.png" height="100" width="150" alt="logo" /></a>
+                        </div>
+                        <div class="col-md-6">
+                            <form class="" action="/action_page.php">
+                                <div class="input-group">
+                                    <input type="search" class="form-control no-radius" placeholder="Search" name="search">
+                                    <div class="input-group-btn">
+                                        <button class="btn btn-default" type="submit">
+                                            <i class="glyphicon glyphicon-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-md-3 text-right">
+                            <div class="header-icons ">
+                                <ul class="dropdown">
+                                    <li class="li"><a href="" data-toggle="modal" data-target="#myModal"><i class="fa fa-bell">
+                      <span class="badge1">5</span>
+                  </i></a></li>
+                                    <li class="li"><a href="" data-toggle="modal" data-target="#filter"><i class="fa fa-filter"></i></a></li>
+                                    <li class="li">
+                                        <a href="" class="dropdown-toggle" type="button" data-toggle="dropdown">
+                                            <i class="fa fa-user"><span class="caret"></span></i></a>
+                                        <ul class="dropdown-menu dropdown-menu-right animated zoomIn">
+                                            <li ><a  th:href="@{'/' + ${id}}"><span class="fa fa-user"></span> [[${names}]]</a></li>
+                                            <li><a th:href="@{/login}"><span class="fas fa-sign-out-alt"></span> Logout</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <nav class="navbar navbar-default no-margin " data-spy="affix" data-offset-top="250">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#MyNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="MyNavbar">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="">HOME</a></li>
+                    <li><a href="#aboutus">NEWS</a></li>
+                    <li><a href="#services">BLOGS</a></li>
+                    <li><a href="#testimonials">TALKS</a></li>
+                    <li><a href="#contactus">PICTURES</a></li>
+                    <li><a href="#">ENTERTAINMENT</a></li>
+                    <li><a href="#aboutus">HEALTH</a></li>
+                    <li><a href="#services">TRAVEL</a></li>
+                    <li><a href="#testimonials">FOOD</a></li>
+                    <li><a href="#contactus">KIDS</a></li>
+                    <li class="dropdown dropdown-hover">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">MORE<span class="caret"></span></a>
+                        <ul class="dropdown-menu animated zoomIn">
+                            <li><a href="#">DEVOTIONAL</a></li>
+                            <li><a href="#">SPORTS</a></li>
+                            <li><a href="#">PERSONAL</a></li>
+                            <li><a href="#">FASHION</a></li>
+                            <li><a href="#">ADVENTURE</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid">
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Notifications</h4>
+                    </div>
+                    <div class="modal-body ">
+                        <div class="body-content ">
+                            <div class="row">
+                                <div class="col-md-12 ">
+                                    <a href="detail.html"><i class="fas fa-video"></i></i>From</a>
+                                    <a href="detail.html"><i class="fas fa-user"></i></i>user 1405#12</a>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 ">
+                                    <a href="detail.html"><i class="fas fa-video"></i></i>From</a>
+                                    <a href="detail.html"><i class="fas fa-user"></i></i>user 1405#12</a>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 ">
+                                    <a href="detail.html"><i class="fas fa-video"></i></i>From</a>
+                                    <a href="detail.html"><i class="fas fa-user"></i></i>user 1405#12</a>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 ">
+                                    <a href="detail.html"><i class="fas fa-video"></i></i>From</a>
+                                    <a href="detail.html"><i class="fas fa-user"></i></i>user 1405#12</a>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 ">
+                                    <a href="detail.html"><i class="fas fa-video"></i></i>From</a>
+                                    <a href="detail.html"><i class="fas fa-user"></i></i>user 1405#12</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!---modal end here--->
+        <!-- Modal -->
+        <div class="modal fade" id="filter" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Filter By Date</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form action="#">
+                            <div class="form-group">
+                                <label for="email">Date:</label>
+                                <input type="date" class="form-control" id="date">
+                            </div>
+                            <button type="submit" class="btn btn-default btn1">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!---modal end here--->
+    </div>
+    <!-- <section class="addbutton">
+      <div class="container-fluid">
+      <a href="post.html" type="button" class="btn btn-info" title="click to upload your videos/blogs/talks/pics">Add Blogs/Videos/Talks/Images</a>
+      </div>  
+    </section> -->
+
+    <section class="gallery">
+        <div class="container-fluid no-padding">
+            <div class="gallery-content">
+                <div class="alert alert-success">
+                    <p class="text-center">
+                        I agree to the terms and condition of the web application. I am surely responsible for the blogs/videos/images/talks posted by me in this application and i will be held responsible for any legal action.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="addbutton text-center">
+        <div class="container-fluid">
+            <a th:href="@{showpostingpage}" type="button" class="btn btn-info" title="click to upload your videos/blogs/talks/pics"><span>Add Blogs/Videos/Talks/Images</span></a>
+        </div>
+    </section>
+    <!---video gallery section strat--->
+   <section class="video-gallery">
+		<div class="section-header">
+			<h4>VIDEOS</h4>
+		</div>
+		<div class="container-fluid">
+			<div class="owl-carousel owl-theme" id="owl-demo">
+				<div class="item" th:each="videos:${video}" >
+					<div class="item-inner">
+						<div class="box19">
+							<img th:src="@{${globalPath}+${videos.thumnail}}" alt=""  style="max-height:180px;">
+							<div class="box-content">
+								<!--  <ul class="icon">
+                                    <li><a th:href="@{${yash}+${videos.postid}}"  type="button" data-toggle="modal"><i class="fa fa-play"></i></a></li>
+                                </ul> -->
+								<ul class="icon">
+									<li><a th:href="@{${yash}+${videos.postid}}" type="button"
+										data-toggle="modal"><i class="fa fa-play"></i></a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="ribbon text-center">
+							<a href="#">[[${videos.postprice}]]</a>
+						</div>
+						<div class="caption">
+							<div class="container-fluid ">
+								<div class="row">
+									<div class="col-md-12 padding">
+										<p>
+											<b>Title:-</b>[[${videos.posttitle}]]
+										</p>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-12 padding">
+										<p>
+											<b>Date:-</b>[[${videos.dateofposting}]]
+										</p>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-12 padding">
+										<p>
+											<b>Description:-</b>[[${videos.postdescription}]]
+										</p>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-12 padding">
+										<a  th:href="@{'/detailedPage/' + ${videos.postid}}" class="btn btn-info" role="button">Buy
+											Now</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Modal -->
+		<div th:each="videos: ${video}">
+			<div th:id="${videos.postid}" id="video"
+				class="modal fade animated zoomIn" role="dialog">
+				<div class="modal-dialog modal-lg zoomIn">
+					<!-- Modal content-->
+					<div class="modal-content">
+						<div class="modal-body">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<div class="container-fluid">
+								<video width="100%" controls="controls"
+									th:poster="@{${globalPath}+${videos.thumnail}}">
+									<source th:src="@{${globalPath}+${videos.preview}}"
+										type="video/mp4">
+									Your browser does not support the video tag.
+								</video>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+
+
+
+	</section>
+	<!---video gallery section end--->
+	<!---Blog gallery section strat--->
+	<section class="video-gallery">
+		<div class="section-header">
+			<h4>BLOGS</h4>
+		</div>
+		<div class="container-fluid">
+			<div class="owl-carousel owl-theme" id="owl-demo">
+				<div class="item" th:each="articles: ${article}">
+					<div class="item-inner">
+						<div class="box19">
+							<img
+								th:src="@{${globalPath}+${articles.thumnail}}"
+								alt="" style="max-height:180px;">
+							<div class="box-content">
+								<ul class="icon">
+									<li><a href="#"><i class="fab fa-blogger-b"></i></a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="ribbon text-center">
+							<a href="#">[[${articles.postid}]]</a>
+						</div>
+						<div class="caption">
+							<div class="container-fluid ">
+								<div class="row">
+									<div class="col-md-12 padding">
+										<p>
+											<b>Title:-</b>[[${articles.posttitle}]]
+										</p>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-12 padding">
+										<p>
+											<b>Date:-</b>[[${articles.dateofposting}]]
+										</p>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-12 padding">
+										<p>
+											<b>Description:-</b>[[${articles.postdescription}]]
+										</p>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-12 padding">
+										<a th:href="@{'/detailedPage/' + ${articles.postid}}" class="btn btn-info" role="button">Buy Now</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+			</div>
+		</div>
+		  
+            Modal
+            <div th:each="articles: ${article}">
+            <div th:id="${articles.postid}" class="modal fade animated zoomIn" role="dialog">
+                <div class="modal-dialog modal-lg zoomIn">
+                    Modal content
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <div class="container-fluid">
+                            
+                                <video width="100%" controls poster="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.jpg">
+                                  <source th:src="@{${globalPath}+${articles.preview}}" type="video/mp4">
+                                  Your browser does not support the video tag.
+                                </video>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div> 
+		
+	</section>
+	<!---blog gallery section end--->
+	<!---Talk gallery section strat--->
+	<section class="video-gallery">
+		<div class="section-header">
+			<h4>TALKS</h4>
+		</div>
+		<div class="container-fluid">
+			<div class="owl-carousel owl-theme" id="owl-demo">
+				<div class="item" th:each="audios:${audio}">
+					<div class="item-inner">
+						<div class="box19">
+							<img th:src="@{${globalPath}+${audios.thumnail}}" alt="" style="max-height:180px;">
+							<div class="box-content">
+								<ul class="icon">
+									<li><a th:href="@{${yash}+${audios.postid}}"
+										data-toggle="modal"><i class="fa fa-microphone"></i></a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="ribbon text-center">
+							<a href="#">[[${audios.postprice}]]</a>
+						</div>
+						<div class="caption">
+							<div class="container-fluid ">
+								<div class="row">
+									<div class="col-md-12 padding">
+										<p>
+											<b>Title:-</b>[[${audios.posttitle}]]
+										</p>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-12 padding">
+										<p>
+											<b>Date:-</b>[[${audios.dateofposting}]]
+										</p>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-12 padding">
+										<p>
+											<b>Description:-</b>[[${audios.postdescription}]]
+										</p>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-12 padding">
+										<a th:href="@{'/detailedPage/' + ${audios.postid}}" class="btn btn-info" role="button">Buy Now</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<!-- Modal -->
+		<div th:each="audios:${audio}">
+			<div th:id="${audios.postid}" class="modal fade animated zoomIn"
+				role="dialog">
+				<div class="modal-dialog  zoomIn">
+					<!-- Modal content-->
+					<div class="modal-content ">
+						<div class="modal-body text-center">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<div class="container-fluid">
+								<audio controls width="100%">
+									<source th:src="@{${globalPath}+${audios.preview}}"
+										type="audio/mpeg">
+									Your browser does not support the audio element.
+								</audio>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</section>
+	<!---Talks gallery section end--->
+	<!---Image gallery section strat--->
+	<section class="video-gallery">
+		<div class="section-header">
+			<h4>IMAGE</h4>
+		</div>
+		<div class="container-fluid">
+			<div class="owl-carousel owl-theme" id="owl-demo">
+				<div class="item" th:each="images:${image}">
+					<div class="item-inner">
+						<div class="box19">
+							<img th:src="@{${globalPath}+${images.thumnail}}" alt="" style="max-height:180px;">
+							<div class="box-content">
+								<ul class="icon">
+									<li><a th:href="@{${yash}+${images.postid}}"
+										data-toggle="modal"><i class="fa fa-image"></i></a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="ribbon text-center">
+							<a href="#">[[${images.postprice}]]</a>
+						</div>
+						<div class="caption">
+							<div class="container-fluid ">
+								<div class="row">
+									<div class="col-md-12 padding">
+										<p>
+											<b>Title:-</b>[[${images.posttitle}]]
+										</p>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-12 padding">
+										<p>
+											<b>Date:-</b>[[${images.dateofposting}]]
+										</p>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-12 padding">
+										<p>
+											<b>Description:-</b>[[${images.postdescription}]]
+										</p>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-12 padding">
+										<a th:href="@{'/detailedPage/' + ${images.postid}}" class="btn btn-info" role="button">Buy Now</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<!-- Modal -->
+		<div th:each="images:${image}">
+			<div th:id="${images.postid}" class="modal fade animated zoomIn"
+				role="dialog">
+				<div class="modal-dialog modal-lg">
+					<!-- Modal content-->
+					<div class="modal-content ">
+						<div class="modal-body text-center">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<div class="container-fluid">
+								<img class="img-responsive"
+									th:src="@{${globalPath}+${images.preview}}" width="100%">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</section>
+
+    <!---Image gallery section end--->
+
+    <!--footer starts from here-->
+    <footer class="footer">
+        <div class="container bottom_border">
+            <div class="row">
+                <div class=" col-md-3">
+                    <h5 class="headin5_amrc col_white_amrc pt2">Find us</h5>
+                    <!--headin5_amrc-->
+                    <p class="mb10">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+                    <p><i class="fa fa-location-arrow"></i> 9878/25 sec 9 rohini 35 </p>
+                    <p><i class="fa fa-phone"></i> +91-9999878398 </p>
+                    <p><i class="fa fa fa-envelope"></i> info@example.com </p>
+                </div>
+
+                <div class="col-md-3">
+                    <h5 class="headin5_amrc col_white_amrc pt2">Quick links</h5>
+                    <!--headin5_amrc-->
+                    <ul class="footer_ul_amrc">
+                        <li><a href="http://webenlance.com">Image Rectoucing</a></li>
+                        <li><a href="http://webenlance.com">Clipping Path</a></li>
+                        <li><a href="http://webenlance.com">Hollow Man Montage</a></li>
+                        <li><a href="http://webenlance.com">Ebay & Amazon</a></li>
+                        <li><a href="http://webenlance.com">Hair Masking/Clipping</a></li>
+                        <li><a href="http://webenlance.com">Image Cropping</a></li>
+                    </ul>
+                    <!--footer_ul_amrc ends here-->
+                </div>
+
+                <div class=" col-md-3 ">
+                    <h5 class="headin5_amrc col_white_amrc pt2">Quick links</h5>
+                    <!--headin5_amrc-->
+                    <ul class="footer_ul_amrc">
+                        <li><a href="http://webenlance.com">Remove Background</a></li>
+                        <li><a href="http://webenlance.com">Shadows & Mirror Reflection</a></li>
+                        <li><a href="http://webenlance.com">Logo Design</a></li>
+                        <li><a href="http://webenlance.com">Vectorization</a></li>
+                        <li><a href="http://webenlance.com">Hair Masking/Clipping</a></li>
+                        <li><a href="http://webenlance.com">Image Cropping</a></li>
+                    </ul>
+                    <!--footer_ul_amrc ends here-->
+                </div>
+
+                <div class=" col-md-3">
+                    <h5 class="headin5_amrc col_white_amrc pt2">Follow us</h5>
+                    <!--headin5_amrc ends here-->
+
+                    <ul class="footer_ul2_amrc">
+                        <li><a href="#"><i class="fab fa-twitter fleft padding-right"></i> </a>
+                            <p>Lorem Ipsum is simply dummy text of the printing...<a href="#">https://www.lipsum.com/</a></p>
+                        </li>
+                        <li><a href="#"><i class="fab fa-twitter fleft padding-right"></i> </a>
+                            <p>Lorem Ipsum is simply dummy text of the printing...<a href="#">https://www.lipsum.com/</a></p>
+                        </li>
+                        <li><a href="#"><i class="fab fa-twitter fleft padding-right"></i> </a>
+                            <p>Lorem Ipsum is simply dummy text of the printing...<a href="#">https://www.lipsum.com/</a></p>
+                        </li>
+                    </ul>
+                    <!--footer_ul2_amrc ends here-->
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <ul class="foote_bottom_ul_amrc">
+                <li><a href="http://webenlance.com">Home</a></li>
+                <li><a href="http://webenlance.com">About</a></li>
+                <li><a href="http://webenlance.com">Services</a></li>
+                <li><a href="http://webenlance.com">Pricing</a></li>
+                <li><a href="http://webenlance.com">Blog</a></li>
+                <li><a href="http://webenlance.com">Contact</a></li>
+            </ul>
+            <!--foote_bottom_ul_amrc ends here-->
+            <p class="text-center">Copyright @2019 | Designed With by <a href="https://www.greatlogics.com/">GreatLogics</a></p>
+
+            <ul class="social_footer_ul">
+                <li><a href="http://webenlance.com"><i class="fab fa-facebook-f"></i></a></li>
+                <li><a href="http://webenlance.com"><i class="fab fa-twitter"></i></a></li>
+                <li><a href="http://webenlance.com"><i class="fab fa-linkedin"></i></a></li>
+                <li><a href="http://webenlance.com"><i class="fab fa-instagram"></i></a></li>
+            </ul>
+            <!--social_footer_ul ends here-->
+        </div>
+
+    </footer>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/owl.js"></script>
+    <script src="js/script.js"></script>
+    <script type="text/javascript" src="js/scrolltop.js"></script>
+    <script type="text/javascript">
+       $('body').on('hidden.bs.modal', '.modal', function () {
+        $('video').trigger('pause');
+        });
+    </script>
+     <script type="text/javascript">
+       $('body').on('hidden.bs.modal', '.modal', function () {
+        $('audio').trigger('pause');
+        });
+    </script>
+    <script type="text/javascript">
+        $(window).scroll(function(){
+            $('nav').toggleClass('scrolled',$(this).scrollTop()>80);
+        });
+    </script>
+    
+</body>
+
+</html>

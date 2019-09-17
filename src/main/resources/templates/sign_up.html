@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<title>Spin Repoerter</title>
+
+<!-- Bootstrap -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/media-queries.css">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+	integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay"
+	crossorigin="anonymous">
+
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body class="body">
+	<section class="login">
+		<div class="container-fluid">
+			<div class="row">
+				<form  name="userRegForm" th:action="@{/insert}" method="post" enctype="multipart/form-data"
+					th:object="${usermaster}" onsubmit="return validateForm(this);">
+					<div class=" col-md-offset-4 col-md-4 col-md-offset-4">
+						<div class="login-logo text-center">
+							<a href="index.html"><img src="images/SPIN REPORTER png.png"
+								height="200" width="250" alt="logo" /></a>
+						</div>
+						<div class="preview text-center">
+							<img class="preview-img"
+								src="http://simpleicon.com/wp-content/uploads/account.png"
+								alt="Preview Image" width="90" height="90" />
+							<div class="browse-button">
+								<i class="fa fa-pencil-alt"></i> <input class="browse-input"
+									type="file" required name="file" id="UploadedFile" />
+							</div>
+							<span class="Error"></span>
+						</div>
+						<div class="holder">
+							<div class="label text-center">
+								<h5>SignUp Form</h5>
+							</div>
+							<div class="label2"></div>
+							<!-- <div class="lock text-center">
+                         <i class="fas fa-user"></i>
+                        </div> -->
+							<!-- <form action="#"name="userRegForm" onsubmit="return validateForm(this);"> -->
+							<div class="form-group mt-25">
+								<label for="email">Name:</label> <input type="text"
+									class="form-control" th:field="*{username}" id="name"
+									placeholder="Enter Your Full Name">
+							</div>
+							<div class="form-group">
+								<label for="email">Email:</label> <input type="email"
+									name="email" id="email" class="form-control"
+									th:field="*{emailid}" autocomplete="false" required
+									pattern="^.{0,64}$" placeholder="Enter Your Email"
+									oninput="validateEmail(this);" onchange="validateEmail(this);"><i
+									class="input-glyph glyphicon glyphicon-ok-circle"></i>
+							</div>
+							<div class="form-group">
+								<label for="pwd">Phone Number:</label> <input type="text"
+									class="form-control" id="pwd" th:field="*{mobilenumber}"
+									placeholder="Enter Your Password">
+							</div>
+							<div class="form-group">
+								<label for="sel1">Country:</label> <select class="form-control"
+									id="sel1" th:field="*{countryid}">
+									<option th:each="c:${country}" th:value="${c.countryid}">[[${c.countryname}]]</option>
+
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="sel1">State:</label> <select class="form-control"
+									id="sel1" th:field="*{stateid}">
+									<option th:each="s:${state}" th:value="${s.stateid}">[[${s.statename}]]</option>
+
+								</select>
+							</div>
+							<div class="form-group">
+                                <label for="sel1">Language:</label>
+                                <select class="form-control" id="sel1" th:field="*{languageid}">
+                                    <option th:each="l:${language}" th:value="${l.languageid}">[[${l.languagename}]]</option>
+                                    
+                                </select>
+                            </div>
+							<div class="form-group">
+								<label for="email">Password:</label> <input type="password"
+									name="password" placeholder="Enter Your Password" th:field="*{pword}"  id="password"
+									class="form-control" autocomplete="false" required
+									pattern="^((?=.*[0-9])(?=.*[a-zA-Z])).{6,12}$"
+									oninput="validatePassword(this);"
+									onchange="validatePassword(this);"> <i
+									class="input-glyph glyphicon glyphicon-ok-circle"></i>
+							</div>
+							<div class="form-group">
+								<label for="passwordConfirm">Confirm Password</label> <input
+									type="password" name="passwordConfirm" id="passwordConfirm" th:field="*{confirmpword}"
+									placeholder="Confirm Passord" class="form-control"
+									autocomplete="false" required
+									pattern="^((?=.*[0-9])(?=.*[a-zA-Z])).{6,12}$"
+									title="Passwords must match." oninput="validatePassword(this);"
+									onchange="validatePassword(this);"> <i
+									class="input-glyph glyphicon glyphicon-ok-circle"></i>
+								<!-- <p class="help-block">Passwords must be between 6 and 12 characters long, containing at least one letter and one number. Please note, passwords are case sensitive.
+                            </p> -->
+							</div>
+							<div class="checkbox">
+								<input type="checkbox" id="test6" /> <label for="test6">Disclaimer</label>
+							</div>
+							<div class="form-group mt-15">
+								<input type="submit"
+									class="btn btn-lg btn-default btn-block btn-1" id="pwd"
+									value="SignUp">
+							</div>
+				</form>
+				<!--form end---->
+			</div>
+			<!---holder end-->
+		</div>
+		<!----col-md-4 end--->
+		</div>
+		<!---row end--->
+		<!---modal area strat---->
+		<!-- Modal -->
+		<div class="modal fade" id="disclaimer1" role="dialog">
+			<div class="modal-dialog">
+
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Upload Image</h4>
+					</div>
+					<div class="modal-body">
+						<div class="body-content">
+							<form action="#">
+								<div class="form-group">
+									<input type="file" class="form-control" id="file">
+								</div>
+								<div class="form-group mt-15">
+									<button type="button" class="btn  btn-default btn-1" id="pwd"
+										data-dismiss="modal">Cancel</button>
+									<button type="button" class="btn  btn-default btn-1 pull-right"
+										id="pwd">Submit</button>
+								</div>
+							</form>
+							<!--form end---->
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<!---modal end here--->
+		<!----modal area  end--->
+		</div>
+		<!-----container-fluid end--->
+	</section>
+	<!--login section end--->
+	<!--footer starts from here-->
+	<footer class="footer">
+		<div class="container bottom_border">
+			<div class="row">
+				<div class=" col-md-3">
+					<h5 class="headin5_amrc col_white_amrc pt2">Find us</h5>
+					<!--headin5_amrc-->
+					<p class="mb10">Lorem Ipsum is simply dummy text of the
+						printing and typesetting industry. Lorem Ipsum has been the
+						industry's standard dummy text ever since the 1500s</p>
+					<p>
+						<i class="fa fa-location-arrow"></i> 9878/25 sec 9 rohini 35
+					</p>
+					<p>
+						<i class="fa fa-phone"></i> +91-9999878398
+					</p>
+					<p>
+						<i class="fa fa fa-envelope"></i> info@example.com
+					</p>
+				</div>
+
+				<div class="col-md-3">
+					<h5 class="headin5_amrc col_white_amrc pt2">Quick links</h5>
+					<!--headin5_amrc-->
+					<ul class="footer_ul_amrc">
+						<li><a href="http://webenlance.com">Image Rectoucing</a></li>
+						<li><a href="http://webenlance.com">Clipping Path</a></li>
+						<li><a href="http://webenlance.com">Hollow Man Montage</a></li>
+						<li><a href="http://webenlance.com">Ebay & Amazon</a></li>
+						<li><a href="http://webenlance.com">Hair Masking/Clipping</a></li>
+						<li><a href="http://webenlance.com">Image Cropping</a></li>
+					</ul>
+					<!--footer_ul_amrc ends here-->
+				</div>
+
+				<div class=" col-md-3 ">
+					<h5 class="headin5_amrc col_white_amrc pt2">Quick links</h5>
+					<!--headin5_amrc-->
+					<ul class="footer_ul_amrc">
+						<li><a href="http://webenlance.com">Remove Background</a></li>
+						<li><a href="http://webenlance.com">Shadows & Mirror
+								Reflection</a></li>
+						<li><a href="http://webenlance.com">Logo Design</a></li>
+						<li><a href="http://webenlance.com">Vectorization</a></li>
+						<li><a href="http://webenlance.com">Hair Masking/Clipping</a></li>
+						<li><a href="http://webenlance.com">Image Cropping</a></li>
+					</ul>
+					<!--footer_ul_amrc ends here-->
+				</div>
+
+				<div class=" col-md-3">
+					<h5 class="headin5_amrc col_white_amrc pt2">Follow us</h5>
+					<!--headin5_amrc ends here-->
+
+					<ul class="footer_ul2_amrc">
+						<li><a href="#"><i
+								class="fab fa-twitter fleft padding-right"></i> </a>
+							<p>
+								Lorem Ipsum is simply dummy text of the printing...<a href="#">https://www.lipsum.com/</a>
+							</p></li>
+						<li><a href="#"><i
+								class="fab fa-twitter fleft padding-right"></i> </a>
+							<p>
+								Lorem Ipsum is simply dummy text of the printing...<a href="#">https://www.lipsum.com/</a>
+							</p></li>
+						<li><a href="#"><i
+								class="fab fa-twitter fleft padding-right"></i> </a>
+							<p>
+								Lorem Ipsum is simply dummy text of the printing...<a href="#">https://www.lipsum.com/</a>
+							</p></li>
+					</ul>
+					<!--footer_ul2_amrc ends here-->
+				</div>
+			</div>
+		</div>
+
+		<div class="container">
+			<ul class="foote_bottom_ul_amrc">
+				<li><a href="http://webenlance.com">Home</a></li>
+				<li><a href="http://webenlance.com">About</a></li>
+				<li><a href="http://webenlance.com">Services</a></li>
+				<li><a href="http://webenlance.com">Pricing</a></li>
+				<li><a href="http://webenlance.com">Blog</a></li>
+				<li><a href="http://webenlance.com">Contact</a></li>
+			</ul>
+			<!--foote_bottom_ul_amrc ends here-->
+			<p class="text-center">
+				Copyright @2019 | Designed With by <a
+					href="https://www.greatlogics.com/">GreatLogics</a>
+			</p>
+
+			<ul class="social_footer_ul">
+				<li><a href="http://webenlance.com"><i
+						class="fab fa-facebook-f"></i></a></li>
+				<li><a href="http://webenlance.com"><i
+						class="fab fa-twitter"></i></a></li>
+				<li><a href="http://webenlance.com"><i
+						class="fab fa-linkedin"></i></a></li>
+				<li><a href="http://webenlance.com"><i
+						class="fab fa-instagram"></i></a></li>
+			</ul>
+			<!--social_footer_ul ends here-->
+		</div>
+
+	</footer>
+
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/script.js"></script>
+	<script type="text/javascript">
+		$(document)
+				.ready(
+						function() {
+							$('input[type="checkbox"]')
+									.click(
+											function() {
+												if ($(this).prop("checked") == true) {
+													swal({
+														title : "Thank You!",
+														text : "I agree to the terms and condition of the web application.I am surely responsible for the blog/videos/images/talksposted by me in this application and i will be held responsible for any legal aciton.",
+														icon : "success",
+														button : "ok",
+													});
+												} else if ($(this).prop(
+														"checked") == false) {
+													swal({
+														title : "Warning!",
+														text : "You Must Agree to the disclaimer policy.",
+														icon : "warning",
+														button : "ok",
+													});
+												}
+											});
+						});
+	</script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</body>
+
+</html>
